@@ -3,6 +3,8 @@ function getWeather() {
     let a = 12;
     let b = 40;
     if (a > b) {
+      reject("rejected");
+    } else {
       resolve("resolved");
     }
   });
@@ -15,8 +17,8 @@ function getWeatherData(weather) {
         case "resolved":
           resolve("we get data");
           break;
-        case "resolvedone":
-          resolve("we did get good data");
+        case "rejected":
+          reject("we did get good data");
           break;
         default:
           reject("find data");
@@ -25,21 +27,6 @@ function getWeatherData(weather) {
   });
 }
 
-// first way ******************************************************
-
-// const promise = getWeather();
-// console.log(promise);
-// promise.then(
-//   function (data) {
-//     console.log(data);
-//   },
-//   function (error) {
-//     console.log(error);
-//   }
-// );
-
-//second way ******************************************************
-
 function promiseResolved(data) {
   console.log("Resolved", data);
 }
@@ -47,4 +34,12 @@ function promiseRejected(error) {
   console.log("Rejected", error);
 }
 
-getWeather().then(getWeatherData).then(promiseResolved, promiseRejected);
+function promiseFinally(final) {
+  console.log("Finally Done");
+}
+
+getWeather()
+  .then(getWeatherData)
+  .then(promiseResolved)
+  .catch(promiseRejected)
+  .finally(promiseFinally);
