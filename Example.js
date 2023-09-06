@@ -9,7 +9,11 @@ function getWeather() {
     }, 3000);
   });
 }
-getWeather()
+let data = getWeather()
   .then((res) => console.log("karera", res))
   .catch((er) => console.log(er))
   .finally(() => "done");
+
+// data.then((res) => {
+//   console.log(res);
+// });
