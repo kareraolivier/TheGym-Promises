@@ -14,14 +14,20 @@ module.exports = job;
 //answer
 
 function job() {
-  return new Promise(function (resolve, reject) {
-    setTimeout(() => {
-      resolve("hello world");
-    }, 2000);
+  return new Promise(function (aaa, bbb) {
+    if (2 > 3) {
+      bbb("is ok");
+    } else {
+      aaa("not ok");
+    }
   });
 }
 module.exports = job;
 
-job().then((res) => {
-  console.log(res);
-});
+job()
+  .catch((er) => console.log("in catch", er))
+  .then((res) => {
+    console.log("in then", res);
+  })
+
+  .finally(console.log("ok"));

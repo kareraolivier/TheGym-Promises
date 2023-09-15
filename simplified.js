@@ -1,6 +1,6 @@
 function getWeather() {
   return new Promise(function (resolve, reject) {
-    let a = 12;
+    let a = 120;
     let b = 40;
     if (a > b) {
       reject("rejected");
@@ -34,7 +34,7 @@ function promiseRejected(error) {
   console.log("Rejected", error);
 }
 
-function promiseFinally(final) {
+function promiseFinally() {
   console.log("Finally Done");
 }
 
